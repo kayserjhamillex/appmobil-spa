@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button (click)="home()" color="light" slot="start">
+      <ion-icon name="arrow-back-outline">
+      </ion-icon>
+    </ion-button>
+    <ion-title>Other day's reservations</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-card>
+          <ion-item>
+            <ion-input slot="start" type="date" [(ngModel)]="parametros.date"></ion-input>
+            <ion-button fill="outline" fill="solid" type="button" color="primary" class="centro boton" (click)="selectday(parametros.date)">
+              <ion-icon name="list-outline"></ion-icon> View
+            </ion-button>
+          </ion-item>
+          <ion-card-content>
+            <ion-list *ngIf="view">
+              <ion-list-header>
+                Customers
+              </ion-list-header>
+              <ion-item *ngFor="let obj of bookingsfilter">
+                <!-- <ion-avatar slot="start">
+                  <img [src]="obj.">
+                </ion-avatar> -->
+                <ion-label>
+                  <h2> {{obj.cliente.Fullname}}</h2>
+                  <h3>{{obj.horario.hora.Horainicio}} hasta {{obj.horario.hora.Horafin}}</h3>
+                  <p>{{obj.servicio.Name}}</p>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
